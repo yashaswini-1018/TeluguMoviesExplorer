@@ -1,0 +1,213 @@
+/* 🌈 Theme Variables */
+:root {
+  --bg-light: #f8f8f8;
+  --bg-dark: #0f0f0f;
+  --text-light: #121212;
+  --text-dark: #ffffff;
+  --card-light: #ffffff;
+  --card-dark: #1c1c1c;
+  --accent: #e50914;
+  --shadow: rgba(0, 0, 0, 0.25);
+}
+
+/* 🌗 Base App */
+.App {
+  min-height: 100vh;
+  background: var(--bg-light);
+  color: var(--text-light);
+  transition: all 0.4s ease;
+  font-family: "Poppins", sans-serif;
+}
+
+.App.dark {
+  background: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+/* 🔝 Header */
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 20px;
+  background: var(--card-light);
+  box-shadow: 0 2px 10px var(--shadow);
+  transition: background 0.4s ease;
+}
+
+.App.dark .header {
+  background: var(--card-dark);
+}
+
+.header h1 {
+  font-size: 1.8rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* 🔍 Search + Sort + Dark Mode */
+.header input,
+.header select,
+.dark-mode-btn {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: none;
+  outline: none;
+  margin: 5px;
+  font-size: 14px;
+  transition: 0.3s ease;
+}
+
+.header input {
+  width: 180px;
+  background: #eee;
+}
+
+.header select {
+  background: #eee;
+  cursor: pointer;
+}
+
+.dark-mode-btn {
+  background: var(--accent);
+  color: #fff;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+/* 🎞️ Movie Grid – 6 cards per row on desktop */
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(180px, 1fr));
+  gap: 14px;
+  padding: 1rem;
+  justify-items: center;
+  align-items: start;
+  max-width: 2000px;
+  margin: 0 auto;
+}
+
+/* 🎬 Movie Card */
+.movie-card {
+  background: var(--card-light);
+  border-radius: 8px;
+  box-shadow: 0 3px 8px var(--shadow);
+  overflow: hidden;
+  width: 200px;
+  height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: 0.3s ease;
+}
+
+.App.dark .movie-card {
+  background: var(--card-dark);
+}
+
+/* 🖼️ Poster Image */
+.movie-card img {
+  width: 100%;
+  height: 190px;
+  object-fit: contain;
+  object-position: center;
+  display: block;
+  background: #000;
+  border-bottom: 2px solid var(--accent);
+}
+
+/* 📋 Movie Info */
+.movie-info {
+  text-align: center;
+  padding: 3px 0 5px;
+}
+
+.movie-info h3 {
+  font-size: 0.85rem;
+  margin: 2px 0;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1.1;
+}
+
+.movie-info p {
+  font-size: 0.7rem;
+  color: gray;
+  margin: 0;
+}
+
+/* 📱 Responsive Layout */
+@media (max-width: 1400px) {
+  .movie-grid {
+    grid-template-columns: repeat(5, minmax(160px, 1fr));
+  }
+}
+
+@media (max-width: 1100px) {
+  .movie-grid {
+    grid-template-columns: repeat(4, minmax(150px, 1fr));
+  }
+}
+
+@media (max-width: 800px) {
+  .movie-grid {
+    grid-template-columns: repeat(3, minmax(140px, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .movie-grid {
+    grid-template-columns: repeat(2, minmax(130px, 1fr));
+  }
+}
+
+@media (max-width: 400px) {
+  .movie-grid {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+/* 🎥 Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal {
+  background: var(--card-light);
+  color: var(--text-light);
+  border-radius: 12px;
+  max-width: 600px;
+  padding: 20px;
+  display: flex;
+  gap: 20px;
+  box-shadow: 0 8px 20px var(--shadow);
+}
+
+.App.dark .modal {
+  background: var(--card-dark);
+  color: var(--text-dark);
+}
+
+.modal img {
+  width: 150px;
+  border-radius: 8px;
+  object-fit: contain;
+  background-color: #000;
+}
